@@ -20,7 +20,17 @@ services:
     image: wordpress
     container_name: wordpress
     restart: always
-
+    ports: 
+      - 8080:80
+    network:
+      - wp_net
+    volumes:
+      - wordpress_data:/var/www/html/
+    environment:
+      WORDPRESS_DB_HOST: database
+      WORDPRESS_DB_USER: wordpressuser
+      WORDPRESS_DB_PASSWORD: wordpress@123
+      WORDPRESS_DB_NAME: wordpress
 
 
 network:
@@ -30,18 +40,5 @@ volumes:
   wordpress_data:
   database_data:
 
-        image: wordpress:latest
-        container_name: wordpress
-        restart: always
-        volumes:
-            - "wordpress-data:/var/www/html"
-        ports:
-            - "80:80"
-        networks:
-            - wpnet
-        environment:
-            WORDPRESS_DB_HOST: database
-            WORDPRESS_DB_USER: wpuser
-            WORDPRESS_DB_PASSWORD: wpuser123 
-            WORDPRESS_DB_NAME: wordpress
-    
+       
+           
