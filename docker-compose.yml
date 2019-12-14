@@ -38,6 +38,6 @@ networks:
 volumes:
   wordpressdata:
   databasedata:
-
+  temp:
        
            
